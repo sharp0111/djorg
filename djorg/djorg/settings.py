@@ -129,3 +129,7 @@ STATIC_URL = '/static/'
 
 # Whitenoise configuration for serving static files
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+# Configure Django App for Heroku.
+import django_heroku
+django_heroku.settings(locals())
