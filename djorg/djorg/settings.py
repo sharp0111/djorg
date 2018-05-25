@@ -28,7 +28,7 @@ SECRET_KEY = config('SECRET_KEY')
 DEBUG = config('DEBUG', cast=bool)
 
 # ALLOWED_HOSTS = []
-ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=lambda v: [s.strip() for s in v.split(',')])
+ALLOWED_HOSTS = config('ALLOWED_HOSTS').split(",")
 
 
 # Application definition
@@ -129,7 +129,3 @@ STATIC_URL = '/static/'
 
 # Whitenoise configuration for serving static files
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-
-# Configure Django App for Heroku.
-import django_heroku
-django_heroku.settings(locals())
