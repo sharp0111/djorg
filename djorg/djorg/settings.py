@@ -88,7 +88,7 @@ DATABASES = {
     }
 }
 
-DATABASES['default'] = dj_database_url.config(default='sqlite:///...', conn_max_age=0)
+DATABASES['default'] = dj_database_url.config('DATABASE_URL', conn_max_age=0)
 
 
 # Password validation
