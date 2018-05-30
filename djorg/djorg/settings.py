@@ -131,7 +131,7 @@ STATIC_URL = '/static/'
 # Django REST framework
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [
-    # Use Django's standard django.contrib.auth permission
+    # Use Django's standard `django.contrib.auth` permissions,
     # or allow read-only access for unauthenticated users
         'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly',
     ]
