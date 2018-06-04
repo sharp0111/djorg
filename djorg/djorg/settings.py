@@ -36,6 +36,7 @@ INSTALLED_APPS = [
     'bookmarks',
     'notes',
     'rest_framework',
+    'rest_framework_authtoken',
     'graphene_django',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -130,12 +131,21 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 # Django REST framework
+from rest_framework.authentication import SessionAuthentication, BasicAuthentication, TokenAuthentication
+
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [
-    # Use Django's standard `django.contrib.auth` permissions,
-    # or allow read-only access for unauthenticated users
+        # Use Django's standard `django.contrib.auth` permissions,
+        # or allow read-only access for unauthenticated users
         'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly',
-    ]
+        # 'rest_framework.simplejwt.authentication.JWTAuthentication',
+    ],
+
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.BasicAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+        'rest_framework.authentication.TokenAuthentication'
+    ),
 }
 
 # Graphene

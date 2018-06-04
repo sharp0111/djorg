@@ -22,6 +22,13 @@ from notes.api import NoteViewSet
 
 from graphene_django.views import GraphQLView
 
+from rest_framework.authtoken import views
+# from rest_framework_simplejwt.views import (
+# TokenObtainPairView,
+# TokenRefreshView,
+# TokenVerifyView,
+# )
+
 router = routers.DefaultRouter()
 router.register(r'notes', NoteViewSet)
 
@@ -33,4 +40,11 @@ urlpatterns = [
 
     path('graphql/', GraphQLView.as_view(graphiql=True)),
     path('api/', include(router.urls)),
+
+    # re_path(r'^api/token/$', TokenObtainPairView.as_view(), name="token_obtain_pair"),
+    # re_path(r'^api/token/refresh$', TokenRefreshView.as_view(), name="token_refresh"),
+
+    # re_path(r'^api/token/verify$', TokenVerifyView.as_view(), name="token_verify"),
+
+    re_path(r'^api-token-auth/', views.obtain_auth_token)
 ]
